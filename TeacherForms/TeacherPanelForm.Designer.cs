@@ -44,6 +44,7 @@
             this.saveTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testStatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.questionsListBox = new System.Windows.Forms.ListBox();
             this.questionTextBox = new System.Windows.Forms.TextBox();
@@ -55,7 +56,8 @@
             this.saveQuestionButton = new System.Windows.Forms.Button();
             this.addOptionButton = new System.Windows.Forms.Button();
             this.teachersTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.TeachersTableAdapter();
-            this.renameTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testsTableAdapter1 = new MyTestsDB.MyTestsDataSetTableAdapters.TestsTableAdapter();
+            this.testCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -167,6 +169,7 @@
             this.openTestToolStripMenuItem,
             this.testStatisticsToolStripMenuItem,
             this.renameTestToolStripMenuItem,
+            this.testCommentToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -193,12 +196,20 @@
             this.openTestToolStripMenuItem.Name = "openTestToolStripMenuItem";
             this.openTestToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.openTestToolStripMenuItem.Text = "Open test";
+            this.openTestToolStripMenuItem.Click += new System.EventHandler(this.openTestToolStripMenuItem_Click);
             // 
             // testStatisticsToolStripMenuItem
             // 
             this.testStatisticsToolStripMenuItem.Name = "testStatisticsToolStripMenuItem";
             this.testStatisticsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.testStatisticsToolStripMenuItem.Text = "Test statistics";
+            // 
+            // renameTestToolStripMenuItem
+            // 
+            this.renameTestToolStripMenuItem.Name = "renameTestToolStripMenuItem";
+            this.renameTestToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.renameTestToolStripMenuItem.Text = "Rename test";
+            this.renameTestToolStripMenuItem.Click += new System.EventHandler(this.renameTestToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -330,12 +341,16 @@
             // 
             this.teachersTableAdapter.ClearBeforeFill = true;
             // 
-            // renameTestToolStripMenuItem
+            // testsTableAdapter1
             // 
-            this.renameTestToolStripMenuItem.Name = "renameTestToolStripMenuItem";
-            this.renameTestToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.renameTestToolStripMenuItem.Text = "Rename test";
-            this.renameTestToolStripMenuItem.Click += new System.EventHandler(this.renameTestToolStripMenuItem_Click);
+            this.testsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // testCommentToolStripMenuItem
+            // 
+            this.testCommentToolStripMenuItem.Name = "testCommentToolStripMenuItem";
+            this.testCommentToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.testCommentToolStripMenuItem.Text = "Test comment";
+            this.testCommentToolStripMenuItem.Click += new System.EventHandler(this.testCommentToolStripMenuItem_Click);
             // 
             // TeacherPanelForm
             // 
@@ -401,5 +416,7 @@
         private System.Windows.Forms.Button saveQuestionButton;
         private MyTestsDataSetTableAdapters.TeachersTableAdapter teachersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem renameTestToolStripMenuItem;
+        private MyTestsDataSetTableAdapters.TestsTableAdapter testsTableAdapter1;
+        private System.Windows.Forms.ToolStripMenuItem testCommentToolStripMenuItem;
     }
 }

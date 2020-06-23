@@ -49,6 +49,9 @@ namespace MyTestsDB
             Options.Clear();
             RightAnswers.Clear();
 
+            if (inputString == "")
+                return;
+
             string[] answerPairs = inputString.Split(new char[] { ';' });
 
             foreach(string answerPair in answerPairs)

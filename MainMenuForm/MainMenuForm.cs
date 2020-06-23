@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyTestsDB.StudentForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MyTestsDB
 {
-    public partial class MainMenuForn : Form
+    public partial class MainMenuForm : Form
     {
-        public MainMenuForn()
+        public MainMenuForm()
         {
             InitializeComponent();
         }
@@ -26,6 +27,12 @@ namespace MyTestsDB
         private void exitButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void attemptButton_Click(object sender, EventArgs e)
+        {
+            StudentAuthForm studentAuthForm = new StudentAuthForm(this);
+            studentAuthForm.ShowDialog();
         }
     }
 }

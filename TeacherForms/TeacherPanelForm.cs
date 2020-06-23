@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -83,6 +84,20 @@ namespace MyTestsDB
             addQuestionButton.Enabled = true;
             removeQuestionButton.Enabled = true;
             editQuestionButton.Enabled = true;
+
+            addOptionButton.Enabled = false;
+            removeOptionButton.Enabled = false;
+            saveQuestionButton.Enabled = false;
+            cancelQuestionButton.Enabled = false;
+            questionTextBox.Enabled = false;
+
+            questionsListBox.Items.Clear();
+            foreach (Question question in test.Questions)
+            {
+                questionsListBox.Items.Add(question.QuestionText);
+            }
+            if (questionsListBox.Items.Count > 0)
+                questionsListBox.SelectedIndex = 0;
         }
 
         private void LoadQuestion(Question question)
@@ -137,6 +152,7 @@ namespace MyTestsDB
             statusQuestionsCountLabel.Text = "Questions number: " + CurrentTest.Questions.Count;
 
             CurrentQuestionNum = CurrentTest.Questions.IndexOf(question);
+            CurrentQuestion = question;
             questionTextBox.Text = question.QuestionText == "" ? "Enter question text here" : question.QuestionText;
 
             addOptionButton.Enabled = true;
@@ -151,8 +167,8 @@ namespace MyTestsDB
         {
             CurrentQuestion.Options.Add("New option");
             CurrentQuestion.RightAnswers.Add("false");
-            SaveCurrentQuestion();
             LoadQuestion(CurrentQuestion);
+            SaveCurrentQuestion();
         }
 
         private void SaveCurrentQuestion()
@@ -181,13 +197,13 @@ namespace MyTestsDB
                     break;
             }
 
-            CurrentTest.Questions.Add(CurrentQuestion);
             CurrentQuestion.QuestionText = questionTextBox.Text;
         }
 
         private void saveQuestionButton_Click(object sender, EventArgs e)
         {
             SaveCurrentQuestion();
+            CurrentTest.Questions.Add(CurrentQuestion);
             questionsListBox.Items.Add(CurrentQuestion.QuestionText);
         }
 
@@ -199,7 +215,8 @@ namespace MyTestsDB
 
         private void questionTextBox_TextChanged(object sender, EventArgs e)
         {
-            CurrentQuestion.QuestionText = questionTextBox.Text;
+            if (CurrentQuestion != null)
+                CurrentQuestion.QuestionText = questionTextBox.Text;
         }
 
         private void saveTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,22 +247,61 @@ namespace MyTestsDB
                         $"VALUES('{question.QuestionText}', '{question.Type}', '{question.AnswersToString()}')";
                     cmd.ExecuteNonQuery();
                 }
+
+                TestsTableAdapter.Insert(CurrentTest.CreatorsID, CurrentTest.Name, DateTime.Now, CurrentTest.Comment);
+
                 MessageBox.Show("Test successfully saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
             catch (Exception ex)
             {
-                if (MessageBox.Show("A test with the same name is already exists. Rename it now? or " + ex.Message, "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    renameTestToolStripMenuItem_Click(null, null);
-                }
+                MessageBox.Show("Error has occured. Details:\n" + ex.Message);
+                //if (MessageBox.Show("A test with the same name is already exists. Rename it now? or " + ex.Message, "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                //{
+                //    renameTestToolStripMenuItem_Click(null, null);
+                //}
             }
             connection.Close();
+
         }
 
         private void renameTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewTestNameForm testNameForm = new NewTestNameForm(this);
             testNameForm.ShowDialog();
+        }
+
+        private void openTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTestForm openTestForm = new OpenTestForm(this);
+            openTestForm.Show();
+        }
+
+        public void DownloadTest(string testName)
+        {
+            SqlConnection connection = teachersTableAdapter.Connection;
+            connection.Open();
+
+            SqlDataAdapter ad = new SqlDataAdapter("SELECT * FROM " + testName, connection);
+            DataTable testTable = new DataTable();
+            ad.Fill(testTable);
+
+            Test newTest = new Test(Convert.ToInt32(testName.Substring(testName.IndexOf('_') + 1)), testName.Substring(0, testName.IndexOf('_')));
+            foreach (DataRow questionRow in testTable.Rows)
+            {
+                Question question = new Question(questionRow["Type_Question"].ToString());
+                question.QuestionText = questionRow["Text_Question"].ToString();
+                question.StringToAnswers(questionRow["Answers"].ToString());
+                newTest.Questions.Add(question);
+            }
+
+            connection.Close();
+            LoadTest(newTest);
+        }
+
+        private void testCommentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditCommentForm editCommentForm = new EditCommentForm(this);
+            editCommentForm.ShowDialog();
         }
     }
 }

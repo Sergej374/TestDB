@@ -46,62 +46,107 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorizationForm.cs">
+    <Compile Include="StudentForms\ChooseTestForPassingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthorizationForm.Designer.cs">
+    <Compile Include="StudentForms\ChooseTestForPassingForm.Designer.cs">
+      <DependentUpon>ChooseTestForPassingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentForms\PassTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentForms\PassTestForm.Designer.cs">
+      <DependentUpon>PassTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentForms\StudentAuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentForms\StudentAuthForm.Designer.cs">
+      <DependentUpon>StudentAuthForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherForms\AuthorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForms\AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChooseQuestionTypeForm.cs">
+    <Compile Include="TeacherForms\ChooseQuestionTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChooseQuestionTypeForm.Designer.cs">
+    <Compile Include="TeacherForms\ChooseQuestionTypeForm.Designer.cs">
       <DependentUpon>ChooseQuestionTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
+    <Compile Include="TeacherForms\EditCommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="TeacherForms\EditCommentForm.Designer.cs">
+      <DependentUpon>EditCommentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuForm\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuForm\MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MyTestsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MyTestsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="NewTestNameForm.cs">
+    <Compile Include="TeacherForms\NewTestNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewTestNameForm.Designer.cs">
+    <Compile Include="TeacherForms\NewTestNameForm.Designer.cs">
       <DependentUpon>NewTestNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherForms\OpenTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForms\OpenTestForm.Designer.cs">
+      <DependentUpon>OpenTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
-    <Compile Include="SignUpForm.cs">
+    <Compile Include="Classes\Question.cs" />
+    <Compile Include="MainMenuForm\SignUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SignUpForm.Designer.cs">
+    <Compile Include="MainMenuForm\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TeacherPanelForm.cs">
+    <Compile Include="TeacherForms\TeacherPanelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeacherPanelForm.Designer.cs">
+    <Compile Include="TeacherForms\TeacherPanelForm.Designer.cs">
       <DependentUpon>TeacherPanelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test.cs" />
-    <EmbeddedResource Include="AuthorizationForm.resx">
+    <Compile Include="Classes\Test.cs" />
+    <EmbeddedResource Include="StudentForms\ChooseTestForPassingForm.resx">
+      <DependentUpon>ChooseTestForPassingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForms\PassTestForm.resx">
+      <DependentUpon>PassTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentForms\StudentAuthForm.resx">
+      <DependentUpon>StudentAuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForms\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChooseQuestionTypeForm.resx">
+    <EmbeddedResource Include="TeacherForms\ChooseQuestionTypeForm.resx">
       <DependentUpon>ChooseQuestionTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="TeacherForms\EditCommentForm.resx">
+      <DependentUpon>EditCommentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewTestNameForm.resx">
+    <EmbeddedResource Include="MainMenuForm\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForms\NewTestNameForm.resx">
       <DependentUpon>NewTestNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForms\OpenTestForm.resx">
+      <DependentUpon>OpenTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -112,10 +157,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SignUpForm.resx">
+    <EmbeddedResource Include="MainMenuForm\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeacherPanelForm.resx">
+    <EmbeddedResource Include="TeacherForms\TeacherPanelForm.resx">
       <DependentUpon>TeacherPanelForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MyTestsDataSet.xsc">
@@ -142,5 +187,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

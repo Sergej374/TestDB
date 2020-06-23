@@ -16,7 +16,7 @@ namespace MyTestsDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenuForn());
+            Application.Run(new MainMenuForm());
         }
     }
 }

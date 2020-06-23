@@ -43,5 +43,11 @@ namespace MyTestsDB
                     break;
             }
         }
+
+        private void testNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != 46 && e.KeyChar != 8)
+                e.Handled = true;
+        }
     }
 }

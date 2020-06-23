@@ -49,6 +49,7 @@
             this.testNameBox.Name = "testNameBox";
             this.testNameBox.Size = new System.Drawing.Size(159, 20);
             this.testNameBox.TabIndex = 1;
+            this.testNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.testNameBox_KeyPress);
             // 
             // okButton
             // 

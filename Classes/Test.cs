@@ -10,6 +10,7 @@ namespace MyTestsDB
     {
         public int CreatorsID { get; }
         public string Name { get; set; }
+        public string Comment { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
         public int Accuracy { get; set; }
 
