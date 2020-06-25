@@ -124,6 +124,12 @@
       <DependentUpon>TeacherPanelForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Test.cs" />
+    <Compile Include="TeacherForms\TestStatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForms\TestStatisticsForm.Designer.cs">
+      <DependentUpon>TestStatisticsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="StudentForms\ChooseTestForPassingForm.resx">
       <DependentUpon>ChooseTestForPassingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherForms\TeacherPanelForm.resx">
       <DependentUpon>TeacherPanelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForms\TestStatisticsForm.resx">
+      <DependentUpon>TestStatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MyTestsDataSet.xsc">
       <DependentUpon>MyTestsDataSet.xsd</DependentUpon>

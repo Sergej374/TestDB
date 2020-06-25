@@ -53,7 +53,8 @@ namespace MyTestsDB
                 label.AutoSize = true;
                 label.Top = button.Top + button.Height / 3;
                 label.Left = button.Right + 5;
-                label.Text = "By " + test["CreatorName"].ToString() + " from " + test["CreationDate"].ToString();
+                DateTime date = Convert.ToDateTime(test["CreationDate"]);
+                label.Text = "By " + test["CreatorName"].ToString() + " from " + date.Month + "/" + date.Day + "/" + date.Year;
                 testButtonsPanel.Controls.Add(button);
                 testButtonsPanel.Controls.Add(label);
             }

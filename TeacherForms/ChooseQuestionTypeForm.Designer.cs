@@ -30,7 +30,6 @@
         {
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.createButton = new System.Windows.Forms.Button();
@@ -60,16 +59,6 @@
             this.radioButton2.Text = "Multiple choice";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(15, 79);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(79, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.Text = "Enter value";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
@@ -83,7 +72,7 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(15, 101);
+            this.radioButton5.Location = new System.Drawing.Point(15, 80);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(69, 17);
             this.radioButton5.TabIndex = 4;
@@ -92,7 +81,7 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(50, 143);
+            this.createButton.Location = new System.Drawing.Point(21, 125);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 23);
             this.createButton.TabIndex = 5;
@@ -106,10 +95,9 @@
             this.choicesPanel.Controls.Add(this.radioButton2);
             this.choicesPanel.Controls.Add(this.radioButton5);
             this.choicesPanel.Controls.Add(this.radioButton4);
-            this.choicesPanel.Controls.Add(this.radioButton3);
             this.choicesPanel.Location = new System.Drawing.Point(12, 12);
             this.choicesPanel.Name = "choicesPanel";
-            this.choicesPanel.Size = new System.Drawing.Size(186, 125);
+            this.choicesPanel.Size = new System.Drawing.Size(186, 107);
             this.choicesPanel.TabIndex = 6;
             // 
             // ChooseQuestionTypeForm
@@ -117,7 +105,7 @@
             this.AcceptButton = this.createButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(210, 190);
+            this.ClientSize = new System.Drawing.Size(210, 157);
             this.ControlBox = false;
             this.Controls.Add(this.choicesPanel);
             this.Controls.Add(this.createButton);
@@ -135,7 +123,6 @@
 
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button createButton;

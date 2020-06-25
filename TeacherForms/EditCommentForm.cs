@@ -24,6 +24,7 @@ namespace MyTestsDB
         private void saveButton_Click(object sender, EventArgs e)
         {
             parent.CurrentTest.Comment = commentBox.Text;
+            Close();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace MyTestsDB
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            cheatDataView.DataSource = adapter.GetData();
+
         }
 
         private void showPasswdBox_CheckedChanged(object sender, EventArgs e)

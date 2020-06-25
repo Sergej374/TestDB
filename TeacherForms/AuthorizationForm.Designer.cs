@@ -36,15 +36,9 @@
             this.signInButton = new System.Windows.Forms.Button();
             this.signUpButton = new System.Windows.Forms.Button();
             this.showPasswdBox = new System.Windows.Forms.CheckBox();
-            this.cheatDataView = new System.Windows.Forms.DataGridView();
-            this.iDteacherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameteacherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.myTestsDataSet = new MyTestsDB.MyTestsDataSet();
             this.teachersTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.TeachersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.cheatDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTestsDataSet)).BeginInit();
             this.SuspendLayout();
@@ -113,46 +107,6 @@
             this.showPasswdBox.UseVisualStyleBackColor = true;
             this.showPasswdBox.CheckedChanged += new System.EventHandler(this.showPasswdBox_CheckedChanged);
             // 
-            // cheatDataView
-            // 
-            this.cheatDataView.AutoGenerateColumns = false;
-            this.cheatDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cheatDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDteacherDataGridViewTextBoxColumn,
-            this.loginDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn,
-            this.nameteacherDataGridViewTextBoxColumn});
-            this.cheatDataView.DataSource = this.teachersBindingSource;
-            this.cheatDataView.Location = new System.Drawing.Point(13, 177);
-            this.cheatDataView.Name = "cheatDataView";
-            this.cheatDataView.Size = new System.Drawing.Size(178, 150);
-            this.cheatDataView.TabIndex = 7;
-            // 
-            // iDteacherDataGridViewTextBoxColumn
-            // 
-            this.iDteacherDataGridViewTextBoxColumn.DataPropertyName = "ID_teacher";
-            this.iDteacherDataGridViewTextBoxColumn.HeaderText = "ID_teacher";
-            this.iDteacherDataGridViewTextBoxColumn.Name = "iDteacherDataGridViewTextBoxColumn";
-            this.iDteacherDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loginDataGridViewTextBoxColumn
-            // 
-            this.loginDataGridViewTextBoxColumn.DataPropertyName = "Login";
-            this.loginDataGridViewTextBoxColumn.HeaderText = "Login";
-            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            // 
-            // nameteacherDataGridViewTextBoxColumn
-            // 
-            this.nameteacherDataGridViewTextBoxColumn.DataPropertyName = "Name_teacher";
-            this.nameteacherDataGridViewTextBoxColumn.HeaderText = "Name_teacher";
-            this.nameteacherDataGridViewTextBoxColumn.Name = "nameteacherDataGridViewTextBoxColumn";
-            // 
             // teachersBindingSource
             // 
             this.teachersBindingSource.DataMember = "Teachers";
@@ -171,8 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(203, 345);
-            this.Controls.Add(this.cheatDataView);
+            this.ClientSize = new System.Drawing.Size(203, 143);
             this.Controls.Add(this.showPasswdBox);
             this.Controls.Add(this.signUpButton);
             this.Controls.Add(this.signInButton);
@@ -180,12 +133,12 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AuthorizationForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authorization";
             this.Load += new System.EventHandler(this.AuthorizationForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cheatDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTestsDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -202,13 +155,8 @@
         private System.Windows.Forms.Button signInButton;
         private System.Windows.Forms.Button signUpButton;
         private System.Windows.Forms.CheckBox showPasswdBox;
-        private System.Windows.Forms.DataGridView cheatDataView;
         private MyTestsDataSet myTestsDataSet;
         private System.Windows.Forms.BindingSource teachersBindingSource;
         private MyTestsDataSetTableAdapters.TeachersTableAdapter teachersTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDteacherDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameteacherDataGridViewTextBoxColumn;
     }
 }

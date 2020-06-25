@@ -27,6 +27,7 @@ namespace MyTestsDB.StudentForms
                 currentQuestion = value;
                 CurrentQuestionID = Test.Questions.IndexOf(value);
                 testProgressBar.Value = CurrentQuestionID;
+                questionsCountLabel.Text = "Question " + Test.Questions.IndexOf(currentQuestion) + " from " + Test.Questions.Count;
             }
         }
         public int Result { get; private set; }
@@ -113,6 +114,38 @@ namespace MyTestsDB.StudentForms
                         answerBox.Text = Answers[Test.Questions.IndexOf(question)][0];
                     splitContainer2.Panel1.Controls.Add(answerBox);
                     break;
+                case "Matching":
+                    Random rnd = new Random();
+                    for (int i = 0; i < question.Options.Count; i++)
+                    {
+                        Label optionMatchText = new Label();
+                        optionMatchText.Top = i * 30 + 5;
+                        optionMatchText.Left = 10;
+                        optionMatchText.Width = 50;
+                        optionMatchText.Text = question.Options[i];
+                        optionMatchText.Name = "optionMatchText";
+                        ComboBox answersBox = new ComboBox();
+                        answersBox.Top = optionMatchText.Top;
+                        answersBox.Left = optionMatchText.Right + 40;
+                        answersBox.Name = "answerMatch";
+
+                        List<string> itemsBunch = new List<string>();
+                        itemsBunch.AddRange(question.RightAnswers.ToArray());
+                        string[] items = new string[question.RightAnswers.Count];
+
+                        for(int j = itemsBunch.Count - 1; j >= 0; j--)
+                        {
+                            string opt = itemsBunch[rnd.Next(itemsBunch.Count)];
+                            itemsBunch.Remove(opt);
+                            items[j] = opt;
+                        }
+
+                        answersBox.Items.AddRange(items);
+
+                        splitContainer2.Panel1.Controls.Add(optionMatchText);
+                        splitContainer2.Panel1.Controls.Add(answersBox);
+                    }
+                    break;
             }
             CurrentQuestion = question;
         }
@@ -141,6 +174,14 @@ namespace MyTestsDB.StudentForms
                     string answer = (splitContainer2.Panel1.Controls[0] as TextBox).Text;
                     Answers[CurrentQuestionID] = new string[1];
                     Answers[CurrentQuestionID][0] = answer;
+                    break;
+                case "Matching":
+                    Control[] matchedAnswers = splitContainer2.Panel1.Controls.Find("answerMatch", false);
+                    Answers[CurrentQuestionID] = new string[matchedAnswers.Length];
+                    for(int i = 0; i < matchedAnswers.Length; i++)
+                    {
+                        Answers[CurrentQuestionID][i] = matchedAnswers[i].Text;
+                    }
                     break;
             }
         }
@@ -209,6 +250,7 @@ namespace MyTestsDB.StudentForms
             if (CurrentQuestionID > 0)
             {
                 LoadQuestion(Test.Questions[CurrentQuestionID - 1]);
+
             }
         }
     }

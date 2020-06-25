@@ -43,8 +43,9 @@
             this.newTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testStatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteTestButton = new System.Windows.Forms.ToolStripMenuItem();
             this.renameTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.questionsListBox = new System.Windows.Forms.ListBox();
             this.questionTextBox = new System.Windows.Forms.TextBox();
@@ -52,12 +53,11 @@
             this.questionWorkSplitContainer = new System.Windows.Forms.SplitContainer();
             this.answersSplitContainer = new System.Windows.Forms.SplitContainer();
             this.removeOptionButton = new System.Windows.Forms.Button();
-            this.cancelQuestionButton = new System.Windows.Forms.Button();
             this.saveQuestionButton = new System.Windows.Forms.Button();
             this.addOptionButton = new System.Windows.Forms.Button();
             this.teachersTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.TeachersTableAdapter();
             this.testsTableAdapter1 = new MyTestsDB.MyTestsDataSetTableAdapters.TestsTableAdapter();
-            this.testCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testStatsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -91,32 +91,32 @@
             // statusDateLabel
             // 
             this.statusDateLabel.Name = "statusDateLabel";
-            this.statusDateLabel.Size = new System.Drawing.Size(90, 17);
-            this.statusDateLabel.Text = "statusDateLabel";
+            this.statusDateLabel.Size = new System.Drawing.Size(76, 17);
+            this.statusDateLabel.Text = "Current Time";
             // 
             // statusSelectedTestLabel
             // 
             this.statusSelectedTestLabel.Name = "statusSelectedTestLabel";
-            this.statusSelectedTestLabel.Size = new System.Drawing.Size(118, 17);
-            this.statusSelectedTestLabel.Text = "toolStripStatusLabel1";
+            this.statusSelectedTestLabel.Size = new System.Drawing.Size(27, 17);
+            this.statusSelectedTestLabel.Text = "Test";
             // 
             // statusQuestionsCountLabel
             // 
             this.statusQuestionsCountLabel.Name = "statusQuestionsCountLabel";
-            this.statusQuestionsCountLabel.Size = new System.Drawing.Size(118, 17);
-            this.statusQuestionsCountLabel.Text = "toolStripStatusLabel1";
+            this.statusQuestionsCountLabel.Size = new System.Drawing.Size(94, 17);
+            this.statusQuestionsCountLabel.Text = "Questions count";
             // 
             // StatusSelectedQuestionLabel
             // 
             this.StatusSelectedQuestionLabel.Name = "StatusSelectedQuestionLabel";
-            this.StatusSelectedQuestionLabel.Size = new System.Drawing.Size(118, 17);
-            this.StatusSelectedQuestionLabel.Text = "toolStripStatusLabel1";
+            this.StatusSelectedQuestionLabel.Size = new System.Drawing.Size(55, 17);
+            this.StatusSelectedQuestionLabel.Text = "Question";
             // 
             // statusSelectedQuestionTypeLabel
             // 
             this.statusSelectedQuestionTypeLabel.Name = "statusSelectedQuestionTypeLabel";
-            this.statusSelectedQuestionTypeLabel.Size = new System.Drawing.Size(182, 17);
-            this.statusSelectedQuestionTypeLabel.Text = "statusSelectedQuestionTypeLabel";
+            this.statusSelectedQuestionTypeLabel.Size = new System.Drawing.Size(81, 17);
+            this.statusSelectedQuestionTypeLabel.Text = "Question type";
             // 
             // toolStrip
             // 
@@ -150,6 +150,7 @@
             this.removeQuestionButton.Name = "removeQuestionButton";
             this.removeQuestionButton.Size = new System.Drawing.Size(54, 22);
             this.removeQuestionButton.Text = "Remove";
+            this.removeQuestionButton.Click += new System.EventHandler(this.removeQuestionButton_Click);
             // 
             // editQuestionButton
             // 
@@ -160,16 +161,18 @@
             this.editQuestionButton.Name = "editQuestionButton";
             this.editQuestionButton.Size = new System.Drawing.Size(31, 22);
             this.editQuestionButton.Text = "Edit";
+            this.editQuestionButton.Click += new System.EventHandler(this.editQuestionButton_Click);
             // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newTestToolStripMenuItem,
             this.saveTestToolStripMenuItem,
+            this.deleteTestButton,
             this.openTestToolStripMenuItem,
-            this.testStatisticsToolStripMenuItem,
             this.renameTestToolStripMenuItem,
             this.testCommentToolStripMenuItem,
+            this.testStatsButton,
             this.exitToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -186,6 +189,7 @@
             // 
             // saveTestToolStripMenuItem
             // 
+            this.saveTestToolStripMenuItem.Enabled = false;
             this.saveTestToolStripMenuItem.Name = "saveTestToolStripMenuItem";
             this.saveTestToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.saveTestToolStripMenuItem.Text = "Save test";
@@ -198,18 +202,29 @@
             this.openTestToolStripMenuItem.Text = "Open test";
             this.openTestToolStripMenuItem.Click += new System.EventHandler(this.openTestToolStripMenuItem_Click);
             // 
-            // testStatisticsToolStripMenuItem
+            // deleteTestButton
             // 
-            this.testStatisticsToolStripMenuItem.Name = "testStatisticsToolStripMenuItem";
-            this.testStatisticsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.testStatisticsToolStripMenuItem.Text = "Test statistics";
+            this.deleteTestButton.Enabled = false;
+            this.deleteTestButton.Name = "deleteTestButton";
+            this.deleteTestButton.Size = new System.Drawing.Size(74, 20);
+            this.deleteTestButton.Text = "Delete test";
+            this.deleteTestButton.Click += new System.EventHandler(this.deleteTestButton_Click);
             // 
             // renameTestToolStripMenuItem
             // 
+            this.renameTestToolStripMenuItem.Enabled = false;
             this.renameTestToolStripMenuItem.Name = "renameTestToolStripMenuItem";
             this.renameTestToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.renameTestToolStripMenuItem.Text = "Rename test";
             this.renameTestToolStripMenuItem.Click += new System.EventHandler(this.renameTestToolStripMenuItem_Click);
+            // 
+            // testCommentToolStripMenuItem
+            // 
+            this.testCommentToolStripMenuItem.Enabled = false;
+            this.testCommentToolStripMenuItem.Name = "testCommentToolStripMenuItem";
+            this.testCommentToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.testCommentToolStripMenuItem.Text = "Test comment";
+            this.testCommentToolStripMenuItem.Click += new System.EventHandler(this.testCommentToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -288,7 +303,6 @@
             // answersSplitContainer.Panel2
             // 
             this.answersSplitContainer.Panel2.Controls.Add(this.removeOptionButton);
-            this.answersSplitContainer.Panel2.Controls.Add(this.cancelQuestionButton);
             this.answersSplitContainer.Panel2.Controls.Add(this.saveQuestionButton);
             this.answersSplitContainer.Panel2.Controls.Add(this.addOptionButton);
             this.answersSplitContainer.Size = new System.Drawing.Size(658, 298);
@@ -298,31 +312,22 @@
             // removeOptionButton
             // 
             this.removeOptionButton.Enabled = false;
-            this.removeOptionButton.Location = new System.Drawing.Point(96, 14);
+            this.removeOptionButton.Location = new System.Drawing.Point(95, 14);
             this.removeOptionButton.Name = "removeOptionButton";
             this.removeOptionButton.Size = new System.Drawing.Size(88, 23);
             this.removeOptionButton.TabIndex = 3;
             this.removeOptionButton.Text = "Remove option";
             this.removeOptionButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelQuestionButton
-            // 
-            this.cancelQuestionButton.Enabled = false;
-            this.cancelQuestionButton.Location = new System.Drawing.Point(356, 14);
-            this.cancelQuestionButton.Name = "cancelQuestionButton";
-            this.cancelQuestionButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelQuestionButton.TabIndex = 2;
-            this.cancelQuestionButton.Text = "Cancel";
-            this.cancelQuestionButton.UseVisualStyleBackColor = true;
+            this.removeOptionButton.Click += new System.EventHandler(this.removeOptionButton_Click);
             // 
             // saveQuestionButton
             // 
             this.saveQuestionButton.Enabled = false;
-            this.saveQuestionButton.Location = new System.Drawing.Point(266, 14);
+            this.saveQuestionButton.Location = new System.Drawing.Point(189, 14);
             this.saveQuestionButton.Name = "saveQuestionButton";
-            this.saveQuestionButton.Size = new System.Drawing.Size(75, 23);
+            this.saveQuestionButton.Size = new System.Drawing.Size(85, 23);
             this.saveQuestionButton.TabIndex = 1;
-            this.saveQuestionButton.Text = "Save";
+            this.saveQuestionButton.Text = "Save question";
             this.saveQuestionButton.UseVisualStyleBackColor = true;
             this.saveQuestionButton.Click += new System.EventHandler(this.saveQuestionButton_Click);
             // 
@@ -345,12 +350,13 @@
             // 
             this.testsTableAdapter1.ClearBeforeFill = true;
             // 
-            // testCommentToolStripMenuItem
+            // testStatsButton
             // 
-            this.testCommentToolStripMenuItem.Name = "testCommentToolStripMenuItem";
-            this.testCommentToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.testCommentToolStripMenuItem.Text = "Test comment";
-            this.testCommentToolStripMenuItem.Click += new System.EventHandler(this.testCommentToolStripMenuItem_Click);
+            this.testStatsButton.Enabled = false;
+            this.testStatsButton.Name = "testStatsButton";
+            this.testStatsButton.Size = new System.Drawing.Size(87, 20);
+            this.testStatsButton.Text = "Test statistics";
+            this.testStatsButton.Click += new System.EventHandler(this.testStatsButton_Click);
             // 
             // TeacherPanelForm
             // 
@@ -408,15 +414,15 @@
         private System.Windows.Forms.ToolStripMenuItem newTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openTestToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testStatisticsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteTestButton;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button addOptionButton;
         private System.Windows.Forms.Button removeOptionButton;
-        private System.Windows.Forms.Button cancelQuestionButton;
         private System.Windows.Forms.Button saveQuestionButton;
         private MyTestsDataSetTableAdapters.TeachersTableAdapter teachersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem renameTestToolStripMenuItem;
         private MyTestsDataSetTableAdapters.TestsTableAdapter testsTableAdapter1;
         private System.Windows.Forms.ToolStripMenuItem testCommentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testStatsButton;
     }
 }
