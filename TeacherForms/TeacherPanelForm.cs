@@ -146,6 +146,20 @@ namespace MyTestsDB
                         answersSplitContainer.Panel1.Controls.Add(optionText);
                     }
                     break;
+                case "Enter word":
+                    TextBox answerBox = new TextBox();
+                    answerBox.Name = "answerBox";
+                    answerBox.Text = "Your answer here";
+                    answerBox.Left = 10;
+                    answerBox.Top = 20;
+                    answerBox.Width += 40;
+
+                    if (question.RightAnswers.Count > 0)
+                        answerBox.Text = question.RightAnswers[0];
+
+                    answersSplitContainer.Panel1.Controls.Add(answerBox);
+
+                    break;
             }
             StatusSelectedQuestionLabel.Text = "Question: " + (CurrentTest.Questions.IndexOf(question) + 1);
             statusSelectedQuestionTypeLabel.Text = "Question type: " + question.Type;
@@ -194,6 +208,11 @@ namespace MyTestsDB
                         CurrentQuestion.Options.Add(answers[i].Text);
                         CurrentQuestion.RightAnswers.Add(((CheckBox)checkBoxes[i]).Checked.ToString());
                     }
+                    break;
+                case "Enter word":
+                    TextBox option = (answersSplitContainer.Panel1.Controls[0] as TextBox);
+                    CurrentQuestion.Options.Add(option.Text);
+                    CurrentQuestion.RightAnswers.Add(option.Text);
                     break;
             }
 

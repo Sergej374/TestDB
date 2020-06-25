@@ -12,7 +12,6 @@ namespace MyTestsDB
         public string Name { get; set; }
         public string Comment { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
-        public int Accuracy { get; set; }
 
         public Test(int ID, string Name)
         {
@@ -20,14 +19,14 @@ namespace MyTestsDB
             this.Name = Name;
         }
 
-        public void MeasureAccuracy()
+        public int MeasureAccuracy(string[][] answers)
         {
             int counter = 0;
-            foreach (Question question in Questions)
+            for(int i = 0; i < Questions.Count; i++)
             {
-                counter += question.Accuracy;
+                counter += Questions[i].CheckAnswers(answers[i]);
             }
-            Accuracy = (int)((float)counter / (float)Questions.Count);
+            return (int)((float)counter / (float)Questions.Count);
         }
     }
 }

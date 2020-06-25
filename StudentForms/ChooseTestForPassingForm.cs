@@ -32,7 +32,7 @@ namespace MyTestsDB
             SqlConnection connection = new SqlConnection(groupsTableAdapter1.Connection.ConnectionString);
             connection.Open();
 
-            SqlCommand cmd = new SqlCommand("SELECT Tests.Name_test as TestName, Teachers.Name_teacher as CreatorName," +
+            SqlCommand cmd = new SqlCommand("SELECT Tests.ID_test as TestID, Tests.Name_test as TestName, Teachers.Name_teacher as CreatorName," +
                 " Tests.ID_teacher as CreatorID, Tests.Date_created as CreationDate FROM Tests INNER JOIN Teachers ON " +
                 "Tests.ID_teacher = Teachers.ID_teacher ORDER BY Teachers.Name_teacher, Tests.Date_created", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -47,6 +47,7 @@ namespace MyTestsDB
                 button.Top = i * (button.Height + 4) + 6;
                 button.Text = test["TestName"].ToString() ;
                 button.Name = test["TestName"] + "_" + test["CreatorID"];
+                button.AccessibleName = test["TestID"].ToString();
                 button.Click += OpenTest;
                 Label label = new Label();
                 label.AutoSize = true;
@@ -76,7 +77,7 @@ namespace MyTestsDB
 
         private void OpenTest(object sender, EventArgs e)
         {
-            PassTestForm passTestForm = new PassTestForm(StudentName, StudentID, MainMenuForm, (sender as Button).Name);
+            PassTestForm passTestForm = new PassTestForm(StudentName, StudentID, MainMenuForm, (sender as Button).Name, Convert.ToInt32((sender as Button).AccessibleName));
             Close();
             passTestForm.Show();
             passTestForm.Select();

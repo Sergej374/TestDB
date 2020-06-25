@@ -12,19 +12,40 @@ namespace MyTestsDB
         public string QuestionText { get; set; } = "";
         public List<string> Options { get; set; } = new List<string>();
         public List<string> RightAnswers { get; set; } = new List<string>();
-        public int Accuracy { get; set; }
 
-        public void CheckAnswers(List<string> answers)
+        public int CheckAnswers(string[] answers)
         {
+            if (answers == null)
+                return 0;
+
             float counter = 0;
-            for (int i = 0; i < answers.Count; i++)
+            for (int i = 0; i < answers.Length; i++)
             {
                 if (answers[i] == RightAnswers[i])
                 {
-                    counter++;
+                    switch (Type)
+                    {
+                        case "Single choice":
+                            if (answers[i] == "True")
+                                return 100;
+                            break;
+                        case "Multiple choice":
+                            if (answers[i] == "True")
+                                counter++;
+                            break;
+                        default:
+                            counter++;
+                            break;
+                    }
                 }
             }
-            Accuracy = (int)(counter / RightAnswers.Count * 100);
+            if(Type == "Multiple choice")
+            {
+                int rightanswers = RightAnswers.FindAll(answer => answer == "True").Count;
+                return (int)(counter / rightanswers * 100);
+            }
+                
+            return (int)(counter / RightAnswers.Count * 100);
         }
 
         public Question(string type)
@@ -35,7 +56,7 @@ namespace MyTestsDB
         public string AnswersToString()
         {
             string output = "";
-            for(int i = 0; i < Options.Count; i++)
+            for (int i = 0; i < Options.Count; i++)
             {
                 output += Options[i] + ">" + RightAnswers[i];
                 if (i < Options.Count - 1)
@@ -54,7 +75,7 @@ namespace MyTestsDB
 
             string[] answerPairs = inputString.Split(new char[] { ';' });
 
-            foreach(string answerPair in answerPairs)
+            foreach (string answerPair in answerPairs)
             {
                 string option = answerPair.Split(new char[] { '>' })[0];
                 string rightAnswer = answerPair.Split(new char[] { '>' })[1];

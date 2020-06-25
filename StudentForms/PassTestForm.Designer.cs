@@ -30,12 +30,13 @@
         {
             this.teachersTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.TeachersTableAdapter();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.questionTextBox = new System.Windows.Forms.TextBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.endTestButton = new System.Windows.Forms.Button();
+            this.nextQuestionButton = new System.Windows.Forms.Button();
+            this.preQuestionButton = new System.Windows.Forms.Button();
+            this.testProgressBar = new System.Windows.Forms.ProgressBar();
+            this.resultsTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.ResultsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,23 +68,6 @@
             this.splitContainer1.SplitterDistance = 71;
             this.splitContainer1.TabIndex = 0;
             // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.button3);
-            this.splitContainer2.Panel2.Controls.Add(this.button2);
-            this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Panel2.Controls.Add(this.progressBar1);
-            this.splitContainer2.Size = new System.Drawing.Size(800, 375);
-            this.splitContainer2.SplitterDistance = 305;
-            this.splitContainer2.TabIndex = 0;
-            // 
             // questionTextBox
             // 
             this.questionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -94,48 +78,75 @@
             this.questionTextBox.Size = new System.Drawing.Size(800, 71);
             this.questionTextBox.TabIndex = 0;
             // 
-            // progressBar1
+            // splitContainer2
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 12);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(272, 42);
-            this.progressBar1.TabIndex = 0;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // button1
+            // splitContainer2.Panel2
             // 
-            this.button1.Location = new System.Drawing.Point(290, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 42);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Previous question";
-            this.button1.UseVisualStyleBackColor = true;
+            this.splitContainer2.Panel2.Controls.Add(this.endTestButton);
+            this.splitContainer2.Panel2.Controls.Add(this.nextQuestionButton);
+            this.splitContainer2.Panel2.Controls.Add(this.preQuestionButton);
+            this.splitContainer2.Panel2.Controls.Add(this.testProgressBar);
+            this.splitContainer2.Size = new System.Drawing.Size(800, 375);
+            this.splitContainer2.SplitterDistance = 305;
+            this.splitContainer2.TabIndex = 0;
             // 
-            // button2
+            // endTestButton
             // 
-            this.button2.Location = new System.Drawing.Point(456, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 42);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Next question";
-            this.button2.UseVisualStyleBackColor = true;
+            this.endTestButton.Location = new System.Drawing.Point(622, 12);
+            this.endTestButton.Name = "endTestButton";
+            this.endTestButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.endTestButton.Size = new System.Drawing.Size(160, 42);
+            this.endTestButton.TabIndex = 3;
+            this.endTestButton.Text = "End test";
+            this.endTestButton.UseVisualStyleBackColor = true;
+            this.endTestButton.Click += new System.EventHandler(this.endTestButton_Click);
             // 
-            // button3
+            // nextQuestionButton
             // 
-            this.button3.Location = new System.Drawing.Point(622, 12);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button3.Size = new System.Drawing.Size(160, 42);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "End test";
-            this.button3.UseVisualStyleBackColor = true;
+            this.nextQuestionButton.Location = new System.Drawing.Point(456, 12);
+            this.nextQuestionButton.Name = "nextQuestionButton";
+            this.nextQuestionButton.Size = new System.Drawing.Size(160, 42);
+            this.nextQuestionButton.TabIndex = 2;
+            this.nextQuestionButton.Text = "Next question";
+            this.nextQuestionButton.UseVisualStyleBackColor = true;
+            this.nextQuestionButton.Click += new System.EventHandler(this.nextQuestionButton_Click);
+            // 
+            // preQuestionButton
+            // 
+            this.preQuestionButton.Location = new System.Drawing.Point(290, 12);
+            this.preQuestionButton.Name = "preQuestionButton";
+            this.preQuestionButton.Size = new System.Drawing.Size(160, 42);
+            this.preQuestionButton.TabIndex = 1;
+            this.preQuestionButton.Text = "Previous question";
+            this.preQuestionButton.UseVisualStyleBackColor = true;
+            this.preQuestionButton.Click += new System.EventHandler(this.preQuestionButton_Click);
+            // 
+            // testProgressBar
+            // 
+            this.testProgressBar.Location = new System.Drawing.Point(12, 12);
+            this.testProgressBar.Name = "testProgressBar";
+            this.testProgressBar.Size = new System.Drawing.Size(272, 42);
+            this.testProgressBar.TabIndex = 0;
+            // 
+            // resultsTableAdapter
+            // 
+            this.resultsTableAdapter.ClearBeforeFill = true;
             // 
             // PassTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PassTestForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PassTestForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PassTestForm_FormClosed);
@@ -157,9 +168,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button endTestButton;
+        private System.Windows.Forms.Button nextQuestionButton;
+        private System.Windows.Forms.Button preQuestionButton;
+        private System.Windows.Forms.ProgressBar testProgressBar;
+        private MyTestsDataSetTableAdapters.ResultsTableAdapter resultsTableAdapter;
     }
 }

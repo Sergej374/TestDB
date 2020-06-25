@@ -28,7 +28,8 @@ namespace MyTestsDB.StudentForms
                 groupsBox.Items.Add(group["GroupNumber"]);
             }
 
-            groupsBox.SelectedIndex = 0;
+            if (groupsBox.Items.Count > 0)
+                groupsBox.SelectedIndex = 0;
         }
 
         private void groupsBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -60,7 +61,7 @@ namespace MyTestsDB.StudentForms
             }
             else
             {
-                if(MessageBox.Show("Such user does not exit. Create one?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Such user does not exit. Create one?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     studentsTableAdapter.Insert(studentName, idGroup);
                     DataRow[] foundStudent = studentsTableAdapter.GetData().Select($"Name_student = '{studentName}' AND ID_group = {idGroup}");
