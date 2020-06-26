@@ -53,6 +53,7 @@
             this.ClientSize = new System.Drawing.Size(704, 328);
             this.Controls.Add(this.statisticsDateView);
             this.Name = "TestStatisticsForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test Statistics";
             ((System.ComponentModel.ISupportInitialize)(this.statisticsDateView)).EndInit();

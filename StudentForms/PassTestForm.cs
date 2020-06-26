@@ -27,7 +27,7 @@ namespace MyTestsDB.StudentForms
                 currentQuestion = value;
                 CurrentQuestionID = Test.Questions.IndexOf(value);
                 testProgressBar.Value = CurrentQuestionID;
-                questionsCountLabel.Text = "Question " + Test.Questions.IndexOf(currentQuestion) + " from " + Test.Questions.Count;
+                questionsCountLabel.Text = "Question " + (Test.Questions.IndexOf(currentQuestion) + 1) + " from " + Test.Questions.Count;
             }
         }
         public int Result { get; private set; }
@@ -141,6 +141,10 @@ namespace MyTestsDB.StudentForms
                         }
 
                         answersBox.Items.AddRange(items);
+                        if(Answers[Test.Questions.IndexOf(question)] != null)
+                        {
+                            answersBox.Text = Answers[Test.Questions.IndexOf(question)][i];
+                        }
 
                         splitContainer2.Panel1.Controls.Add(optionMatchText);
                         splitContainer2.Panel1.Controls.Add(answersBox);

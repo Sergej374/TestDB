@@ -100,7 +100,6 @@ namespace MyTestsDB
             deleteTestButton.Enabled = true;
             renameTestToolStripMenuItem.Enabled = true;
             testCommentToolStripMenuItem.Enabled = true;
-            testStatsButton.Enabled = true;
 
 
             foreach (Question question in test.Questions)
@@ -416,7 +415,6 @@ namespace MyTestsDB
             deleteTestButton.Enabled = false;
             renameTestToolStripMenuItem.Enabled = false;
             testCommentToolStripMenuItem.Enabled = false;
-            testStatsButton.Enabled = false;
 
             addOptionButton.Enabled = false;
             removeOptionButton.Enabled = false;
@@ -452,7 +450,7 @@ namespace MyTestsDB
             StatusSelectedQuestionLabel.Text = "Question: ";
             statusSelectedQuestionTypeLabel.Text = "Question type: ";
             statusQuestionsCountLabel.Text = "Questions number: ";
-
+            
             questionTextBox.Text = "";
 
             addOptionButton.Enabled = false;
@@ -478,7 +476,7 @@ namespace MyTestsDB
 
         private void testStatsButton_Click(object sender, EventArgs e)
         {
-            TestStatisticsForm testStatisticsForm = new TestStatisticsForm();
+            TestStatisticsForm testStatisticsForm = new TestStatisticsForm(TeacherCreatorID);
             testStatisticsForm.Show();
         }
     }

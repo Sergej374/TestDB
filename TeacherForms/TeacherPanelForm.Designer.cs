@@ -42,10 +42,11 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.newTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteTestButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testStatsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.questionsListBox = new System.Windows.Forms.ListBox();
             this.questionTextBox = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.addOptionButton = new System.Windows.Forms.Button();
             this.teachersTableAdapter = new MyTestsDB.MyTestsDataSetTableAdapters.TeachersTableAdapter();
             this.testsTableAdapter1 = new MyTestsDB.MyTestsDataSetTableAdapters.TestsTableAdapter();
-            this.testStatsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -195,13 +195,6 @@
             this.saveTestToolStripMenuItem.Text = "Save test";
             this.saveTestToolStripMenuItem.Click += new System.EventHandler(this.saveTestToolStripMenuItem_Click);
             // 
-            // openTestToolStripMenuItem
-            // 
-            this.openTestToolStripMenuItem.Name = "openTestToolStripMenuItem";
-            this.openTestToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.openTestToolStripMenuItem.Text = "Open test";
-            this.openTestToolStripMenuItem.Click += new System.EventHandler(this.openTestToolStripMenuItem_Click);
-            // 
             // deleteTestButton
             // 
             this.deleteTestButton.Enabled = false;
@@ -209,6 +202,13 @@
             this.deleteTestButton.Size = new System.Drawing.Size(74, 20);
             this.deleteTestButton.Text = "Delete test";
             this.deleteTestButton.Click += new System.EventHandler(this.deleteTestButton_Click);
+            // 
+            // openTestToolStripMenuItem
+            // 
+            this.openTestToolStripMenuItem.Name = "openTestToolStripMenuItem";
+            this.openTestToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.openTestToolStripMenuItem.Text = "Open test";
+            this.openTestToolStripMenuItem.Click += new System.EventHandler(this.openTestToolStripMenuItem_Click);
             // 
             // renameTestToolStripMenuItem
             // 
@@ -225,6 +225,13 @@
             this.testCommentToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.testCommentToolStripMenuItem.Text = "Test comment";
             this.testCommentToolStripMenuItem.Click += new System.EventHandler(this.testCommentToolStripMenuItem_Click);
+            // 
+            // testStatsButton
+            // 
+            this.testStatsButton.Name = "testStatsButton";
+            this.testStatsButton.Size = new System.Drawing.Size(87, 20);
+            this.testStatsButton.Text = "Test statistics";
+            this.testStatsButton.Click += new System.EventHandler(this.testStatsButton_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -350,14 +357,6 @@
             // 
             this.testsTableAdapter1.ClearBeforeFill = true;
             // 
-            // testStatsButton
-            // 
-            this.testStatsButton.Enabled = false;
-            this.testStatsButton.Name = "testStatsButton";
-            this.testStatsButton.Size = new System.Drawing.Size(87, 20);
-            this.testStatsButton.Text = "Test statistics";
-            this.testStatsButton.Click += new System.EventHandler(this.testStatsButton_Click);
-            // 
             // TeacherPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +368,7 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "TeacherPanelForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tests workpanel | Logged as";
             this.statusStrip.ResumeLayout(false);
